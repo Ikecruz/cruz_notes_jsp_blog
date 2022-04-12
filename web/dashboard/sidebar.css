@@ -1,0 +1,129 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Mar 28, 2022, 2:49:12 AM
+    Author     : devcruz
+*/
+@import url('https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap');
+
+p{
+    margin-bottom: 0;
+}
+
+.white_smoke{
+    background: whitesmoke;
+}
+
+.brand{
+    font-family: 'Shadows Into Light', cursive;
+    font-size: 1em;
+    font-weight: bold;
+    color: white;
+}
+
+.dash_contain{
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+}
+
+.dash_contain #overlay{
+    width: 100vw;
+    height: 100vh;
+    z-index: 2;
+    background: rgba(0, 0, 0, 0.5);
+    position: fixed;
+    display: none;
+}
+
+.dash_contain .side_bar{
+    min-height: 100%;
+    background: #222;
+    width: 250px;
+    padding: 15px 30px;
+    color: white;
+    transition: .6s ease-in-out;
+}
+
+@media screen and (max-width: 768px) {
+    .dash_contain .side_bar{
+        position: absolute;
+        z-index: 200;
+        min-height: 100vh;
+    }
+
+    .dash_contain .side_bar.mobile{
+        transform: translateX(-300px);
+    }
+    
+}
+
+.dash_contain .side_bar .dash_brand{
+    margin: 10px 15px;
+}
+
+.dash_contain .side_bar .side_bar_list{
+    list-style: none;
+    padding: 0;
+}
+
+.dash_contain .side_bar .side_bar_list li:hover{
+    border-left: 2px solid white;
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+
+.dash_contain .side_bar .side_bar_list.active li{
+    border-left: 2px solid white;
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+
+.dash_contain .side_bar .side_bar_list li a{
+    text-decoration: none;
+    color: white;
+    display: block;
+    width: 100%;
+    height: 100%;
+    padding: 12px 15px;
+}
+
+@media screen and (max-width: 768px) {
+    .dash_contain .side_bar .side_bar_list li a{
+        padding: 10px 10px;
+    }
+
+    .dash_contain .side_bar .dash_brand{
+        margin: 10px 10px;
+    }
+}
+
+.dash_contain .main_contain{
+    height: 100vh;
+    flex: 1;
+    overflow-y: auto;
+}
+
+.dash_contain .main_contain .mobile_nav{
+    display: flex;
+    height: 50px;
+    align-items: center;
+    background: #222;
+    padding: 4px 30px;
+}
+
+.dash_contain .main_contain .mobile_nav .nav_toggler{
+    border: none;
+    background: none;
+    color: white;
+    margin-right: 20px;
+}
+
+@media screen and (min-width: 768px){
+    .dash_contain .main_contain .mobile_nav{
+        display: none;
+    }
+}
