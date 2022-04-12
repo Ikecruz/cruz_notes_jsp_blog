@@ -43,6 +43,9 @@
         Path currentRelativePath = Paths.get("");
         String s = currentRelativePath.toAbsolutePath().toString();
         File ff = new File(request.getContextPath()+"/post_images/"+saveFile);
+        if (!ff.exists()) {
+            ff.mkdir();
+        }
         FileOutputStream fileOut = new FileOutputStream(ff);
         fileOut.write(dataBytes, startPos, (endPos - startPos));
         fileOut.flush();
