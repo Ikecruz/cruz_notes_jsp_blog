@@ -108,4 +108,22 @@ public class EmailHandler {
         
         return result;
     }
+    
+    public int countEmail () throws SQLException {
+        int result = 0;
+        
+        if (db.connect()){
+            final Connection con =db.getConnection();
+            
+            String COUNT = "SELECT COUNT(email_id) as count FROM email";
+            
+            PreparedStatement ps = con.prepareStatement(COUNT);
+            
+            ResultSet rs = ps.executeQuery();
+            
+            if (rs.next()) result = rs.getInt("count");
+        }
+        
+        return result;
+    }
 }

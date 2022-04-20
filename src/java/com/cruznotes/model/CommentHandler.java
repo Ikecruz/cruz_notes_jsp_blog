@@ -132,4 +132,22 @@ public class CommentHandler {
         return result;
     }
     
+    public int countComment () throws SQLException {
+        int result = 0;
+        
+        if (db.connect()){
+            final Connection con =db.getConnection();
+            
+            String COUNT = "SELECT COUNT(comment_id) as count FROM comments";
+            
+            PreparedStatement ps = con.prepareStatement(COUNT);
+            
+            ResultSet rs = ps.executeQuery();
+            
+            if (rs.next()) result = rs.getInt("count");
+        }
+        
+        return result;
+    }
+    
 }

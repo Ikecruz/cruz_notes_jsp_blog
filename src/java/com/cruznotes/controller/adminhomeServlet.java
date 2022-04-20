@@ -5,8 +5,14 @@
  */
 package com.cruznotes.controller;
 
+import com.cruznotes.model.CommentHandler;
+import com.cruznotes.model.EmailHandler;
+import com.cruznotes.model.PostHandler;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -61,14 +67,28 @@ public class adminhomeServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         HttpSession session = request.getSession();
+        PostHandler ph = new PostHandler();
+        EmailHandler emailHandle = new EmailHandler();
+        CommentHandler commentHandle = new CommentHandler();
         
         if (session.getAttribute("loggedin") == null || session.getAttribute("loggedin").equals("")){
             response.sendRedirect("../login");
             return;
         }
         
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/dashboard/home.jsp");
+        try {
+            
+            
+            request.setAttribute("postCount", ph.countPost());
+            request.setAttribute("commentCount", commentHandle.countComment());
+            request.setAttribute("emailCount", emailHandle.countEmail());
+            
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/dashboard/home.jsp");
             dispatcher.forward(request, response);
+        } catch (SQLException ex) {
+            Logger.getLogger(adminhomeServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
+       
     }
 
     /**

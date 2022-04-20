@@ -42,10 +42,7 @@
         int endPos = ((file.substring(0, boundaryLocation)).getBytes()).length;
         Path currentRelativePath = Paths.get("");
         String s = currentRelativePath.toAbsolutePath().toString();
-        File ff = new File(request.getContextPath()+"/post_images/"+saveFile);
-        if (!ff.exists()) {
-            ff.mkdir();
-        }
+        File ff = new File("C:/Users/PC/Documents/NetBeansProjects/cruznotes/build/web/post_images/"+saveFile);
         FileOutputStream fileOut = new FileOutputStream(ff);
         fileOut.write(dataBytes, startPos, (endPos - startPos));
         fileOut.flush();

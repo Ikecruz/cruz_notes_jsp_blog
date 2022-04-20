@@ -57,6 +57,31 @@
             margin: 20px 0;
         }
         
+        .table_contain .stat_card{
+            height: 150px;
+            width: 100%;
+            border: 1px solid #e0e0e0;
+            padding: 20px;
+            display: block;
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        .table_contain .stat_card .value_contain{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .table_contain .stat_card .value{
+            font-size: 2.5em;
+            font-weight: 900;
+        }
+        
+        .table_contain .stat_card i{
+            font-size: 1.3em;
+            font-weight: 900;
+        }
         
     </style>
 </head>
@@ -100,7 +125,41 @@
             <div class="px-md-5 px-3">
                 
                 <div class="table_contain p-4">
+                    <div class="row gx-3 mb-3">
+                        <div class="col-md-4 mb-3">
+                            <a href="allpost" class="stat_card">
+                                <p class="name">Posts</p>
+                                <div class="value_contain">
+                                    <p class="value"><%= request.getAttribute("postCount") %></p>
+                                    <i class="fal fa-newspaper"></i>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <a href="comments" class="stat_card">
+                                <p class="name">Comments</p>
+                                <div class="value_contain">
+                                    <p class="value"><%= request.getAttribute("commentCount") %></p>
+                                    <i class="fal fa-comment"></i>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <a href="emails" class="stat_card">
+                                <p class="name">E-mails</p>
+                                <div class="value_contain">
+                                    <p class="value"><%= request.getAttribute("emailCount") %></p>
+                                    <i class="fal fa-envelope"></i>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
                     
+<!--                    <div class="chart_contain">
+                        <p>Post by Category</p>
+                        <canvas id="myChart"></canvas>
+                    </div>-->
+ 
                 </div>
                 
             </div>
@@ -108,6 +167,7 @@
     </div>
 
     <script src="sidebar.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
         
         const formatDate = (d) => {
@@ -152,6 +212,39 @@
             })
         })
     </script>
+    
+<!--    <script>
+        const labels = [
+            'Red',
+            'Blue',
+            'Yellow'
+        ];
+
+        const data = {
+            labels: labels,
+            datasets: [{
+                label: 'My First Dataset',
+                data: [300, 50, 100],
+                backgroundColor: [
+                  'rgb(255, 99, 132)',
+                  'rgb(54, 162, 235)',
+                  'rgb(255, 205, 86)'
+                ],
+                hoverOffset: 4
+            }]
+        };
+
+        const config = {
+          type: 'doughnut',
+          data: data,
+          options: {}
+        };
+        
+        const myChart = new Chart(
+            document.getElementById('myChart'),
+            config
+        );
+    </script>-->
 </body>
 </html>
 

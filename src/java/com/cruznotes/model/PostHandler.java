@@ -188,4 +188,22 @@ public class PostHandler {
         
         return result;
     }
+    
+    public int countPost () throws SQLException {
+        int result = 0;
+        
+        if (db.connect()){
+            final Connection con =db.getConnection();
+            
+            String COUNT = "SELECT COUNT(post_id) as count FROM stories";
+            
+            PreparedStatement ps = con.prepareStatement(COUNT);
+            
+            ResultSet rs = ps.executeQuery();
+            
+            if (rs.next()) result = rs.getInt("count");
+        }
+        
+        return result;
+    }
 }
